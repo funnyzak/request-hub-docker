@@ -3,9 +3,11 @@
 [![Docker Stars](https://img.shields.io/docker/stars/funnyzak/request-hub.svg?style=flat-square)](https://hub.docker.com/r/funnyzak/request-hub/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/funnyzak/request-hub.svg?style=flat-square)](https://hub.docker.com/r/funnyzak/request-hub/)
 
-This image is based on Alpine Linux image, which is a 144MB image, and contains [Request Hub](https://github.com/kyledayton/requesthub).
+This image is based on Alpine Linux image, which is a 144MB image. Base On [kyledayton/requesthub](https://github.com/kyledayton/requesthub) Project.
 
-Download size of this image is only:
+
+
+Download size of this image is:
 
 [![](https://images.microbadger.com/badges/image/funnyzak/request-hub.svg)](http://microbadger.com/images/funnyzak/request-hub "Get your own image badge on microbadger.com")
 
