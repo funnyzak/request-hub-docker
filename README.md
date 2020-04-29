@@ -58,4 +58,4 @@ services:
 
 ## Preview
 
-![](preview.jpg)
+![preview](https://raw.githubusercontent.com/funnyzak/request-hub-docker/master/preview.jpg)
