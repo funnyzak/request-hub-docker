@@ -1,4 +1,4 @@
-FROM golang:1.14.2-alpine3.11
+FROM golang:alpine AS builder
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -19,6 +19,11 @@ RUN apk add --no-cache git && \
 
 # get and build requesthub
 RUN go get github.com/kyledayton/requesthub
+
+
+FROM funnyzak/alpine-glibc AS runner
+
+COPY --from=builder /go/bin/requesthub /usr/local/bin
 
 ENV LANG=C.UTF-8
 # YAML Configuration File

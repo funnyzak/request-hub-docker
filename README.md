@@ -5,7 +5,7 @@ Receive, Log, and Proxy HTTP requests. Base On [kyledayton/requesthub](https://g
 [![Docker Stars](https://img.shields.io/docker/stars/funnyzak/request-hub.svg?style=flat-square)](https://hub.docker.com/r/funnyzak/request-hub/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/funnyzak/request-hub.svg?style=flat-square)](https://hub.docker.com/r/funnyzak/request-hub/)
 
-This image is based on Alpine Linux image, which is a 130MB image.
+This image is based on Alpine Linux image, which is a 8MB image.
 
 Download size of this image is:
 
