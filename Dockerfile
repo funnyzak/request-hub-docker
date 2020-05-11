@@ -21,7 +21,6 @@ RUN apk add --no-cache git && \
 # get and build requesthub
 RUN go get github.com/kyledayton/requesthub
 
-
 FROM funnyzak/alpine-glibc AS runner
 
 COPY --from=builder /go/bin/requesthub /usr/local/bin
@@ -39,7 +38,6 @@ ENV MAX_REQUESTS=512
 ENV USER_NAME=
 # HTTP Basic Auth Password for accessing hub
 ENV PASSWORD=
-
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
