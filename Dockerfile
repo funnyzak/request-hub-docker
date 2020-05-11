@@ -1,4 +1,4 @@
-FROM golang:alpine
+FROM golang:alpine AS builder
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -17,11 +17,15 @@ LABEL org.label-schema.vendor="potato<silenceace@gmail.com>" \
 RUN apk add --no-cache git && \
     rm  -rf /tmp/* /var/cache/apk/*
 
-# install request hub
+# get and build requesthub
 RUN go get github.com/kyledayton/requesthub/...
 
-ENV LANG=C.UTF-8
 
+FROM alpine:3.5 AS runner
+
+COPY --from=builder /go/bin/requesthub /usr/local/bin
+
+ENV LANG=C.UTF-8
 # YAML Configuration File
 ENV CONFIG_YML=
 # Disable the web UI
@@ -35,10 +39,8 @@ ENV USER_NAME=
 # HTTP Basic Auth Password for accessing hub
 ENV PASSWORD=
 
+
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
-
-# export requesthub path
-ENV PATH $GOPATH/bin:$PATH
 
 ENTRYPOINT ["entrypoint.sh"]
