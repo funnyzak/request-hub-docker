@@ -6,7 +6,7 @@ ARG VCS_REF
 LABEL org.label-schema.vendor="potato<silenceace@gmail.com>" \
     org.label-schema.name="RequestHub" \
     org.label-schema.build-date="${BUILD_DATE}" \
-    org.label-schema.description="RequestHub. Base On: https://github.com/kyledayton/requesthub" \
+    org.label-schema.description="RequestHub - Receive, Log, and Proxy HTTP requests. Base On: kyledayton/requesthub. which is a only 13.9MB image." \
     org.label-schema.docker.cmd="docker run -d --name request-hub -p 80:54321 funnyzak/request-hub" \
     org.label-schema.url="https://yycc.me" \
     org.label-schema.schema-version="1.0"	\
