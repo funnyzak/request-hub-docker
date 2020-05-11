@@ -1,5 +1,14 @@
 FROM golang:alpine AS builder
 
+# install git
+RUN apk add --no-cache git && \
+    rm  -rf /tmp/* /var/cache/apk/*
+
+# get and build requesthub
+RUN go get github.com/kyledayton/requesthub
+
+FROM funnyzak/alpine-glibc AS runner
+
 ARG BUILD_DATE
 ARG VCS_REF
 
@@ -9,19 +18,10 @@ LABEL org.label-schema.vendor="potato<silenceace@gmail.com>" \
     org.label-schema.description="RequestHub - Receive, Log, and Proxy HTTP requests. Base On: kyledayton/requesthub. which is a only 13.9MB image." \
     org.label-schema.docker.cmd="docker run -d --name request-hub -p 80:54321 funnyzak/request-hub" \
     org.label-schema.url="https://yycc.me" \
-    org.label-schema.schema-version="1.0"	\
+    org.label-schema.schema-version="1.0" \
     org.label-schema.vcs-type="Git" \
     org.label-schema.vcs-ref="${VCS_REF}" \
     org.label-schema.vcs-url="https://github.com/funnyzak/request-hub-docker" 
-
-# install git
-RUN apk add --no-cache git && \
-    rm  -rf /tmp/* /var/cache/apk/*
-
-# get and build requesthub
-RUN go get github.com/kyledayton/requesthub
-
-FROM funnyzak/alpine-glibc AS runner
 
 COPY --from=builder /go/bin/requesthub /usr/local/bin
 
